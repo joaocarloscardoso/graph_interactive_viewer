@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>AITAM graph discovery</title>
+      
+        <!-- External resources -->
+        <!-- Add default CSS reference -->
+        <link rel="stylesheet" href="https://unpkg.com/popoto/dist/popoto.min.css">
+        <!-- Add Popoto script reference, will default to popoto.min.js -->
+        <script src="https://unpkg.com/popoto"></script>
+        <style>
+            #popoto-graph:fullscreen {
+                width: 100%;
+                height: 100%;
+            }
+    
+            #popoto-graph:-webkit-full-screen {
+                width: 100%;
+                height: 100%;
+            }
+    
+            #popoto-graph:-moz-full-screen {
+                width: 100%;
+                height: 100%;
+            }
+    
+            #popoto-graph:-ms-fullscreen {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body class="ppt-body">
+
+        <section class="ppt-section-main" style="height: 900px">
+            <div class="ppt-section-header">
+                <span class="ppt-header-span">AITAM graph -</span> Recommendations
+            </div>
+        
+            <!-- By default the graph is generated on the HTML element with ID "popoto-graph" -->
+            <div id="popoto-graph" class="ppt-div-graph">
+                <!-- Graph is generated here -->
+            </div>            
+        </section>
+        <!-- Required scripts -->
+        <script src="https://unpkg.com/jquery" charset="utf-8"></script>
+        <script src="https://unpkg.com/d3" charset="utf-8"></script>
+        <script src="https://unpkg.com/popoto/dist/popoto.js"></script>
+        <script src="https://unpkg.com/popoto/dist/popoto.min.js" charset="utf-8"></script>
+        <script>
+
+            // Demo Neo4j database settings hosted on GrapheneDb
+            popoto.rest.CYPHER_URL = "http://localhost:7474/db/data/transaction/commit";
+            //popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:e-gov");
+
+            // Define the list of label provider to customize the graph behavior:
+           popoto.provider.node.Provider = {
+                "Audit": {
+                    "returnAttributes": ["Title", "relAuthoreased", "Year"],
+                    "constraintAttribute": "Title"
+                },
+                "Country": {
+                    "returnAttributes": ["Name"],
+                    "constraintAttribute": "Name"
+                },
+                "Topics": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Function": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Activity_Domain": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Goal": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Process": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Requirement": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Impact": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Risk_Case": {
+                    "returnAttributes": ["Definition"],
+                    "constraintAttribute": "Definition"
+                },
+                "Observation": {
+                    "returnAttributes": ["Definition", "Risk"],
+                    "constraintAttribute": "Definition"
+                }
+            };
+
+            // Start the generation using parameter as root label of the query.
+            popoto.start("Country");
+
+        </script>
+
+    </body>
+</html>
