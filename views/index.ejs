@@ -10,8 +10,6 @@
         <!-- Add Popoto script reference, will default to popoto.min.js -->
         <script src="https://unpkg.com/popoto"></script>
 
-        
-
         <style>
             #popoto-graph:fullscreen {
                 width: 100%;
@@ -35,7 +33,6 @@
         </style>
     </head>
     <body class="ppt-body">
-
         <section class="ppt-section-main" style="height: 900px">
             <div class="notice-bar">
             <!--<div class="ppt-section-header">-->
@@ -46,7 +43,7 @@
                 can also be used to remove a selection.
             </div>
             <div class="ppt-section-header">
-                <p>
+                <p>     <button id="reset" style="height: 25px" value="Reset">Reset search</button>
                         <button id="randomize" style="height: 25px">Get matrix link</button>
                         <a id="test" target="_blank" href="#"> </a>
                 </p>
@@ -198,8 +195,12 @@
                     popoto.tools.reset();
                 }
             }
+            function ReloadPage(){
+                window.location.reload();
+            }
 
             d3.select("#randomize").on("click", changeQueryRoot);
+            d3.select("#reset").on("click", ReloadPage);
  
             // Start the generation using parameter as root label of the query.
             popoto.start("Topics");
@@ -218,6 +219,5 @@
                 }
             );
         </script>
-
     </body>
 </html>
