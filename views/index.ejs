@@ -45,7 +45,7 @@
             <div class="ppt-section-header">
                 <p>     <button id="reset" style="height: 25px" value="Reset">Reset search</button>
                         <button id="randomize" style="height: 25px">Get matrix link</button>
-                        <a id="test" target="_blank" href="#"> </a>
+                        <a id="urlreport" target="_blank" href="#"> </a>
                 </p>
             </div>    
             <nav class="ppt-taxo-nav">
@@ -209,11 +209,11 @@
                 function (resultObjects) {
                     for (var i = 0; i < resultObjects.length; i++) {
                         if (resultObjects[i].attributes.Title !== undefined) {
-                            document.getElementById('test').innerText=" on " + resultObjects[i].attributes.Title;
-                            document.getElementById('test').href= resultObjects[i].attributes.URL;
+                            document.getElementById('urlreport').innerText=" on " + resultObjects[i].attributes.Title;
+                            document.getElementById('urlreport').href= resultObjects[i].attributes.URL;
                         } else {
-                            document.getElementById('test').innerText="" //"Audit Report";
-                            document.getElementById('test').href="#";
+                            document.getElementById('urlreport').innerText="" //"Audit Report";
+                            document.getElementById('urlreport').href="#";
                         }
                     }
                 }
